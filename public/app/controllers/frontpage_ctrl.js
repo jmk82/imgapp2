@@ -31,7 +31,7 @@ App.controller('FrontPageCtrl', function($scope, $http, $location) {
 
   $http.get('/images' + query).success(function (pics) {
     pics.forEach(function (image) {
-      $scope.images.push( { src: '/images/' + image.filename, id: image.id });
+      $scope.images.push( { src: 'https://s3.amazonaws.com/imgappbucket/' + image.filename, id: image.id });
     });
   });
 });
