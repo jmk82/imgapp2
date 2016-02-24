@@ -7,7 +7,6 @@ App.controller('ImageCtrl', function($scope, $rootScope, $http, $routeParams, $l
       }
     });
     $scope.image = image;
-    console.log(image);
   });
 
   $scope.comment = function() {
