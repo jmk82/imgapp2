@@ -1,0 +1,7 @@
+<div>
+  <h1>User: {{user.username}}</h1>
+
+  <div>
+    <a ng-href="#/images/{{image.id}}" ng-repeat="image in user.Images"><img ng-src={{image.filename}} class="img-responsive front-image" /></a>
+  </div>
+</div>

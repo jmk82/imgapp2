@@ -1,0 +1,18 @@
+<div class="image-grid">
+  <div class="front-image-div">
+    <a ng-href="#/images/{{image.id}}" ng-repeat="image in images"><img ng-src={{image.src}} class="img-responsive front-image" /></a>
+  </div>
+
+  <div id="navigation">
+    <a ng-if="startImage > 1" ng-click="prev()">Prev<a/><a ng-click="next()">Next</a>
+  </div>
+
+  Images per page:
+  <select ng-model="imagesPerPage">
+    <option value="6">6</option>
+    <option value="12">12</option>
+  </select>
+
+  imgPer: {{imagesPerPage}} 
+  startimg: {{startImage}}
+</div>

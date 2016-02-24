@@ -1,0 +1,22 @@
+<div>
+  <h1>Image: {{image.filename}}</h1>
+
+  <div>
+    <a ng-href="/images/{{image.filename}}"><img ng-src="/images/{{image.filename}}" class="img-responsive image-page-image" /></a>
+  </div>
+
+  <div id="comments">
+    <table>
+      <tr ng-repeat="comment in image.Comments | orderBy : 'id'">
+        <td class="commentTime">{{comment.createdAt | date:'d.M.yyyy H.mm'}}</td><td class="commentUser"><a ng-href="#/users/{{comment.User.id}}">{{comment.User.username}}</a>:</td><td class="commentContent">{{comment.content}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <form class="form-user">
+    <label for="newComment" class="sr-only">Comment: </label>
+    <input type="text" id="newComment" class="form-control" placeholder="Comment" ng-model="newComment.content">
+
+    <button class="btn btn-lg btn-primary" ng-click="comment()">Send</button>
+  </form>
+</div>

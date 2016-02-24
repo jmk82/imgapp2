@@ -1,0 +1,14 @@
+<form class="form-user" name="regForm">
+  <h2 class="form-user-heading">Please register</h2>
+  
+  <label for="username" class="sr-only">Username</label>
+  <input type="text" name="username" class="form-control" placeholder="Username" required ng-minlength="3" autofocus ng-model="newUser.username">
+  
+  <label for="password" class="sr-only">Password</label>
+  <input type="password" name="password" class="form-control" placeholder="Password" required ng-minlength="3" ng-model="newUser.password">
+  
+  <label for="password2" class="sr-only">Retype password</label>
+  <input type="password" name="password2" class="form-control" placeholder="Retype password" required ng-minlength="3" ng-model="newUser.password2">
+  
+  <button class="btn btn-lg btn-primary " ng-disabled="!regForm.$valid || (regForm.password.$viewValue != regForm.password2.$viewValue)" ng-click="addUser()">Register</button>
+</form>
