@@ -13,6 +13,7 @@ App.controller('ImageCtrl', function($scope, $rootScope, $http, $routeParams, $l
     $http.post('/images/' + $routeParams.id + '/comment', $scope.newComment).success(function (comment) {
       comment.User = $rootScope.userLoggedIn || { username: 'Anon'};
       $scope.image.Comments.push(comment);
+      $scope.newComment.content = '';
     });
   };
 });
