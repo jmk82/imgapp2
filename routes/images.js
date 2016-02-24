@@ -45,7 +45,6 @@ router.post('/', auth, upload.single('image'), function (req, res) {
 
 function sendToS3(newFilename, req, res) {
   var s3_params = {
-      Bucket: S3_BUCKET,
       Key: newFilename,
       Body: req.file.buffer,
       ContentType: req.file.mimetype,
