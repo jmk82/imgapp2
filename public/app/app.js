@@ -29,7 +29,6 @@ App.config(['$routeProvider', function ($routeProvider) {
     })
 
     .when('/upload', {
-      controller: 'UploadCtrl',
       templateUrl: 'app/views/upload.html',
       resolve: auth
     })

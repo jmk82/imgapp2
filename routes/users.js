@@ -12,6 +12,7 @@ router.post('/', function (req, res) {
         newUser.password = hash;
         db.User.create(newUser).then(function (user) {
           delete user.dataValues.password;
+          req.session.userId = user.id;
           res.json(user);
         });
       });      

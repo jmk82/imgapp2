@@ -1,4 +1,4 @@
-App.controller('RegisterCtrl', function($scope, $http, $location) {
+App.controller('UploadCtrl', function($scope, $http, $location) {
   $scope.addUser = function() {
     $http.post('/users', $scope.newUser).success(function (user) {
       $location.path('/');
