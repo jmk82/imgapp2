@@ -48,8 +48,9 @@ router.get('/:id', function (req, res) {
 
 router.post('/', auth, upload.single('image'), function (req, res) {
   var filetype = req.file.originalname.split('.')[1].slice(0, 4);
+  console.log(req.session.userId);
   insertImageToDb(filetype, req.session.userId, function (image_id) {
-    var filename = image.id + '.' + filetype;
+    var filename = image_id + '.' + filetype;
     sendToS3(filename, req, res);
   });
   
@@ -58,7 +59,7 @@ router.post('/', auth, upload.single('image'), function (req, res) {
 function insertImageToDb(filetype, userid, cb) {
   var newImage = {
       UserId: userid,
-  }
+  };
   db.Image.create(newImage)
     .then(function (image) {
       db.Image.update({ filename: image.id + '.' + filetype}, 
@@ -95,20 +96,5 @@ router.post('/:id/comment', function (req, res) {
     res.json(comment);
   });
 });
-
-function insertImageToDb(userid, filetype, cb) {
-  var newImage = {
-      UserId: userid,
-  }
-  db.Image.create(newImage)
-      .then(function (image) {
-          db.Image.update({ filename: image.id + '.' + filetype}, 
-              { where: { id: image.id }});
-          cb(image.filename);
-      })
-      .catch(function (error) {
-          console.log("ERROR: ", error);
-      });
-}
 
 module.exports = router;
