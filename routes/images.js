@@ -48,14 +48,14 @@ router.get('/:id', function (req, res) {
 
 router.post('/', auth, upload.single('image'), function (req, res) {
   var filetype = req.file.originalname.split('.')[1].slice(0, 4);
-  insertImageToDb(filetype, function (image_id) {
+  insertImageToDb(filetype, req.session.userId, function (image_id) {
     var filename = image.id + '.' + filetype;
     sendToS3(filename, req, res);
   });
   
 });
 
-function insertImageToDb(filetype, cb) {
+function insertImageToDb(filetype, userid, cb) {
   var newImage = {
       UserId: userid,
   }
