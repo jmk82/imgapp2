@@ -7,6 +7,12 @@ var upload = require('../utils/upload');
 var auth = require('../utils/auth');
 var s3 = new aws.S3();
 
+var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID;
+var AWS_SECRET_KEY = process.env.AWS_SECRET_ACCESS_KEY;
+var S3_BUCKET = process.env.S3_BUCKET;
+
+aws.config.update({accessKeyId: AWS_ACCESS_KEY , secretAccessKey: AWS_SECRET_KEY });
+
 router.get('/', function (req, res) {
   var limit = req.query.limit || 6;
   var start = req.query.start - 1 || 0;
@@ -45,6 +51,7 @@ router.post('/', auth, upload.single('image'), function (req, res) {
 
 function sendToS3(newFilename, req, res) {
   var s3_params = {
+      Bucket: S3_BUCKET,
       Key: newFilename,
       Body: req.file.buffer,
       ContentType: req.file.mimetype,

@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('postgres://urfnmeruxkmwnk:ZXll5jewtxnKEV8UCV6mFfl2Vp@ec2-54-225-199-245.compute-1.amazonaws.com:5432/dcj5604scmf92o', {
+var sequelize = new Sequelize('postgres://yddtxpwqkzshup:3K_HIdaDK6-rNSe_IyWLqsyNIE@ec2-184-73-253-4.compute-1.amazonaws.com:5432/d83dht2n4kph35', {
   dialect: 'postgres',
   protocol: 'postgres'
 });
