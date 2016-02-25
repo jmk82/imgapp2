@@ -7,6 +7,7 @@
   margin: 30px;
   max-height: 200px;
   max-width: 200px;
+  image-orientation: from-image;
 }
 
 .image-page-image {
