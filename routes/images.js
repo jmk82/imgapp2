@@ -35,8 +35,7 @@ router.get('/:id', function (req, res) {
       }
     }]
   }).then(function (image) {
-    console.log(image);
-    //todo: delete password!
+    image.User.password = null;
     if (image.Comments.length !== 0) {
       image.Comments.forEach(function(comment) {
         if (comment.User && comment.User.password) {
