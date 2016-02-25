@@ -83,7 +83,6 @@ function sendToS3(newFilename, req, res) {
 
     s3.upload(s3_params, function (err, data) {
       console.log(err, data);
-      //res.redirect(data.Location);
       res.redirect('../#/users/' + req.session.userId);
     });
 }
