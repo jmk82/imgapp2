@@ -93,8 +93,6 @@ router.post('/:id/comment', function (req, res) {
   newComment.UserId = req.session.userId;
   newComment.ImageId = req.params.id;
 
-  if (newComment.)
-
   db.Comment.create(newComment).then(function (comment) {
     res.json(comment);
   });
