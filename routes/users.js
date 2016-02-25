@@ -17,7 +17,7 @@ router.post('/', function (req, res) {
         });
       });      
     } else {
-      res.status(400).json({ error: 'Username already in use' });
+      res.status(409).json({ error: 'Username already in use' });
     }
   });
 });
@@ -34,11 +34,11 @@ router.post('/login', function (req, res) {
           delete user.dataValues.password;
           res.json(user);
         } else {
-          res.send(403);
+          res.status(403).json({ error: 'Wrong username or password' });
         }
       });
     } else {
-      res.send(403);
+      res.status(403).json({ error: 'Wrong username or password' });
     }
   });
 });

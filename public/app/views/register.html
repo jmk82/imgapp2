@@ -12,3 +12,7 @@
   
   <button class="btn btn-lg btn-primary " ng-disabled="!regForm.$valid || (regForm.password.$viewValue != regForm.password2.$viewValue)" ng-click="addUser()">Register</button>
 </form>
+
+<div class="error">
+  <span ng-model="errorMessage.error"></span>
+</div>
