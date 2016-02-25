@@ -34,11 +34,11 @@ router.post('/login', function (req, res) {
           delete user.dataValues.password;
           res.json(user);
         } else {
-          res.status(403).json({ error: 'Wrong username or password' });
+          res.status(403).json({ error: 'Wrong password' });
         }
       });
     } else {
-      res.status(403).json({ error: 'Wrong username or password' });
+      res.status(403).json({ error: 'No such user' });
     }
   });
 });

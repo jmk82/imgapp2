@@ -24,16 +24,18 @@ router.get('/', function (req, res) {
 });
 
 router.get('/:id', function (req, res) {
-  db.Image.findOne({
+  db.Image.findOne({ 
     where: { id: req.params.id },
-    include: {
+    include: [
+      { model: db.User }, {
       order: '"createdAt" ASC',
       model: db.Comment,
       include: {
         model: db.User
-      } 
-    }
+      }
+    }]
   }).then(function (image) {
+    console.log(image);
     //todo: delete password!
     if (image.Comments.length !== 0) {
       image.Comments.forEach(function(comment) {
