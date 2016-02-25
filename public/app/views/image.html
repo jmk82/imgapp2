@@ -16,6 +16,6 @@
     <label for="newComment" class="sr-only">Comment: </label>
     <input type="text" id="newComment" class="form-control" placeholder="Comment" ng-model="newComment.content">
 
-    <button class="btn btn-lg btn-primary" ng-click="comment()">Send</button>
+    <button class="btn btn-lg btn-primary" ng-click="comment()" ng-disabled="!newComment.content">Send</button>
   </form>
 </div>
