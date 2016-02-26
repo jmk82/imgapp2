@@ -19,10 +19,12 @@ You can not:
 Backend:
 - Node.js/Express web server, mostly REST practises followed
 - App is running in Heroku using its PostgreSQL database for user/image/comment data
-- Posted images are saved to a bucket in Amazon S3 where they are visible for everyone. (First they were saved to local filesystem through Multer (https://www.npmjs.com/package/multer) DiskStorage, but this was changed when app was changed to use Heroku)
+- Posted images are saved to a bucket in Amazon S3 where they are visible for everyone. (First they were saved to local filesystem through Multer (https://www.npmjs.com/package/multer) DiskStorage, but this was changed when app was updated to use Heroku)
 - Sequelize ORM is used with PostgreSQL database
 
 Frontend:
 - Angular.js is used for browser routing and views
 - Bootstrap for layout with a little custom CSS
 - views for frontpage, user, image and login/register forms
+
+Frontend and backend communicate through JSON
