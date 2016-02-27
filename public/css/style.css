@@ -51,3 +51,7 @@ nav a {
 .header-user {
   font-size: 0.5em;
 }
+
+.show-all-button {
+  margin: 15px;
+}

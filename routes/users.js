@@ -65,11 +65,12 @@ router.get('/logout', function (req, res) {
 });
 
 router.get('/:id', function (req, res) {
+  var limit = req.query.limit || 6;
   db.User.findOne({
     where: { id: req.params.id},
     include: {
        order: '"createdAt" DESC',
-       limit: 6,
+       limit: limit,
        model: db.Image }}).then(function (user) {
         delete user.dataValues.password;
       res.json(user);

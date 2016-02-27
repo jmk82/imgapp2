@@ -4,4 +4,6 @@
   <div>
     <a ng-href="#/images/{{image.id}}" ng-repeat="image in user.Images"><img ng-src="https://s3.amazonaws.com/imgappbucket/{{image.filename}}" class="img-responsive front-image" /></a>
   </div>
+
+  <button type="button" class="btn btn-primary show-all-button" ng-click="showAll()">Show all</button>
 </div>

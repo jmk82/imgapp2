@@ -1,8 +1,12 @@
 App.controller('UserCtrl', function($scope, $http, $routeParams) {
   $http.get('/users/' + $routeParams.id).success(function (user) {
-    /*user.Images.forEach(function (image) {
-      image.filename = '/images/' + image.filename;
-    });*/
     $scope.user = user;
   });
+
+  // TODO: refactor
+  $scope.showAll = function() {
+    $http.get('/users/' + $routeParams.id + '?limit=10000').success(function (user) {
+      $scope.user = user;
+    });    
+  }
 });

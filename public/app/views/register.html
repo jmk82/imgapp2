@@ -10,7 +10,7 @@
   <label for="password2" class="sr-only">Retype password</label>
   <input type="password" name="password2" class="form-control" placeholder="Retype password" required ng-minlength="3" ng-model="newUser.password2">
   
-  <button class="btn btn-lg btn-primary " ng-disabled="!regForm.$valid || (regForm.password.$viewValue != regForm.password2.$viewValue)" ng-click="addUser()">Register</button>
+  <button class="btn btn-lg btn-primary" ng-disabled="!regForm.$valid || (regForm.password.$viewValue != regForm.password2.$viewValue)" ng-click="addUser()">Register</button>
 </form>
 
 <div class="error">
