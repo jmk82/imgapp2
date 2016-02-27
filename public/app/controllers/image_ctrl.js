@@ -6,6 +6,11 @@ App.controller('ImageCtrl', function($scope, $rootScope, $http, $routeParams, $l
         comment.User.username = 'Anon';
       }
     });
+    if ($rootScope.userLoggedIn && $rootScope.userLoggedIn.id === image.UserId) {
+      $scope.ownerIsLoggedIn = true;
+    } else {
+      $scope.ownerIsLoggedIn = false;
+    }
     $scope.image = image;
   });
 
@@ -15,5 +20,11 @@ App.controller('ImageCtrl', function($scope, $rootScope, $http, $routeParams, $l
       $scope.image.Comments.push(comment);
       $scope.newComment.content = '';
     });
+  };
+
+  $scope.deleteImage = function() {
+    $http.delete('/images/' + $routeParams.id).success(function () {
+      $location.url('/users/' + $rootScope.userLoggedIn.id);
+    })
   };
 });

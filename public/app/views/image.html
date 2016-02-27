@@ -1,6 +1,7 @@
 <div>
   <h1>Image: {{image.filename}} <span class="header-user">(by: <a ng-href="#/users/{{image.UserId}}">{{image.User.username}}</a>, added 
-    {{image.createdAt | date:'d.M.yyyy H.mm'}} )</span></h1>
+    {{image.createdAt | date:'d.M.yyyy H.mm'}} ) </span><button type="button" class="btn btn-danger" ng-click="deleteImage()" ng-if="ownerIsLoggedIn">
+  <span class="glyphicon glyphicon-remove"></span>Delete image</button></h1>
 
     <a ng-href="https://s3.amazonaws.com/imgappbucket/{{image.filename}}"><img ng-src="https://s3.amazonaws.com/imgappbucket/{{image.filename}}" class="img-responsive image-page-image" /></a>
 

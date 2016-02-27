@@ -11,7 +11,7 @@ var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_ACCESS_KEY;
 var S3_BUCKET = process.env.S3_BUCKET;
 
-var BUCKET_URL = 'https://s3.amazonaws.com/imgappbucket/';
+// var BUCKET_URL = 'https://s3.amazonaws.com/imgappbucket/';
 
 aws.config.update({accessKeyId: AWS_ACCESS_KEY , secretAccessKey: AWS_SECRET_KEY });
 
@@ -87,6 +87,18 @@ function sendToS3(newFilename, req, res) {
     });
 }
 
+function deleteFromS3(filename) {
+  var params = {
+    Bucket: S3_BUCKET,
+    Key: filename,
+  };
+  s3.deleteObject(params, function(err, data) {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
+
 router.post('/:id/comment', function (req, res) {
   var newComment = req.body;
   newComment.UserId = req.session.userId;
@@ -95,6 +107,27 @@ router.post('/:id/comment', function (req, res) {
   db.Comment.create(newComment).then(function (comment) {
     res.json(comment);
   });
+});
+
+router.delete('/:id', auth, function (req, res) {
+  db.Image.findOne({ where: { id: req.params.id }})
+    .then(function (image) {
+      if (req.session.userId === image.UserId) {
+        db.Image.destroy({ where: { id: req.params.id }}).then(function (num) {
+          if (num === 1) {
+            deleteFromS3(image.filename);
+            res.send(200).json({ message: "Image deleted"});
+          } else {
+            res.send(404);
+          }
+        })
+      } else {
+        res.send(403);
+      }
+    })
+    .catch(function (error) {
+      res.send(400).json({ error: error });
+    });
 });
 
 module.exports = router;
