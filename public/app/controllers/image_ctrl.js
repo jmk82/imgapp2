@@ -23,8 +23,10 @@ App.controller('ImageCtrl', function($scope, $rootScope, $http, $routeParams, $l
   };
 
   $scope.deleteImage = function() {
-    $http.delete('/images/' + $routeParams.id).success(function () {
-      $location.url('/users/' + $rootScope.userLoggedIn.id);
-    })
+    if (confirm("Really delete image?")) {
+      $http.delete('/images/' + $routeParams.id).success(function () {
+        $location.url('/users/' + $rootScope.userLoggedIn.id);
+      });
+    }
   };
 });

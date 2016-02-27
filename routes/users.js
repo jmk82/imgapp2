@@ -46,7 +46,7 @@ router.post('/login', function (req, res) {
 router.get('/list', function (req, res) {
   db.User.findAll()
     .then(function (users) {
-      users.forEach(function () {
+      users.forEach(function (user) {
         delete user.dataValues.password;
       });
       res.json(users);
