@@ -43,6 +43,19 @@ router.post('/login', function (req, res) {
   });
 });
 
+router.get('/list', function (req, res) {
+  db.User.findAll()
+    .then(function (users) {
+      users.forEach(function () {
+        delete user.dataValues.password;
+      });
+      res.json(users);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
 router.get('/logged-in', function (req, res) {
   var loggedInId = req.session.userId ? req.session.userId : null;
 

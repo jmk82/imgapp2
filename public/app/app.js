@@ -33,6 +33,12 @@ App.config(['$routeProvider', function ($routeProvider) {
       resolve: auth
     })
 
+    .when('/users/list', {
+      controller: 'UserListCtrl',
+      templateUrl: 'app/views/userlist.html',
+      resolve: auth
+    })
+
     .when('/users/:id', {
       controller: 'UserCtrl',
       templateUrl: 'app/views/user.html',

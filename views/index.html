@@ -19,6 +19,7 @@
     <script src="/app/controllers/register_ctrl.js"></script>
     <script src="/app/controllers/login_ctrl.js"></script>
     <script src="/app/controllers/user_ctrl.js"></script>
+    <script src="/app/controllers/userlist_ctrl.js"></script>
     <script src="/app/controllers/image_ctrl.js"></script>
 
   </head>
@@ -41,6 +42,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li ng-if="userLoggedIn"><a href="#/upload">Upload image</a></li>
+            <li><a href="#/users/list">Show user list</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ng-if="userLoggedIn"><a ng-href="#/users/{{userLoggedIn.id}}">My Page</a></li>
