@@ -48,7 +48,8 @@ router.get('/:id', function (req, res) {
 });
 
 router.post('/', auth, upload.single('image'), function (req, res) {
-  var filetype = req.file.originalname.split('.')[1].slice(0, 4);
+  var splittedFilename = req.file.originalname.split('.');
+  var filetype = splittedFilename[splittedFilename.length - 1].slice(0, 4);
   console.log(req.session.userId);
   insertImageToDb(filetype, req.session.userId, function (image_id) {
     var filename = image_id + '.' + filetype;
