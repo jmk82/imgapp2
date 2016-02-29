@@ -11,8 +11,6 @@ var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_ACCESS_KEY;
 var S3_BUCKET = process.env.S3_BUCKET;
 
-// var BUCKET_URL = 'https://s3.amazonaws.com/imgappbucket/';
-
 aws.config.update({accessKeyId: AWS_ACCESS_KEY , secretAccessKey: AWS_SECRET_KEY });
 
 router.get('/', function (req, res) {
